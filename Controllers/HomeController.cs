@@ -13,14 +13,34 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+      public IActionResult Index()
     {
+        ViewBag.Equipo = BD.ListarEquipos();
         return View();
+    }
+/*IActionResult VerDetalleEquipo(int IdEquipo): Debe retornar la View DetalleEquipo. 
+Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista de jugadores de dicho equipo.*/
+    public IActionResult VerDetalleEquipo(int IdEquipo)
+    {
+        ViewBag.Equipo = BD.VerInfoEquipo(IdEquipo);
+        ViewBag.Jugador = BD.ListarJugadores(IdEquipo);
+        return View();
+    }
+    
+    public IActionResult Eliminar(int id){
+        BD.EliminarPelicula(id);
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    [HttpPost]
+    public IActionResult CrearPelicula(string Nombre, int Duracion, string Director){
+        BD.InsertarPelicula(Nombre, Duracion, Director);
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
