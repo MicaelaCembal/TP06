@@ -14,32 +14,8 @@ namespace TP06;
 
 public class BD {
 
-    private static string _connectionString = @"Server=A-CRO-01\SQLEXPRESS;
-    DataBase=Qatar2022;
-    Trusted_Connection=True";
-
-    /*public static List<Pelicula> ObtenerPeliculas(){
-        List<Pelicula> lista = new List<Pelicula>();
-        string sql = "SELECT * FROM Peliculas";
-        using(SqlConnection db = new SqlConnection(_connectionString)){
-            lista = db.Query<Pelicula>(sql).ToList();
-        }
-        return lista;
-    }
-
-    public static void InsertarPelicula(string nombre, int duracion, string director){
-        string sql = "INSERT INTO Peliculas VALUES (@pNombre, @pDuracion, @pDirector)";
-        using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new { pNombre = nombre, pDuracion = duracion, pDirector = director });
-        }
-    }
-
-    public static void EliminarPelicula(int id){
-        string sql = "DELETE FROM Peliculas WHERE IdPelicula = @pId";
-        using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new { pId = id });
-        }
-    }*/
+    private static string  _connectionString = @"Server=A-CRO-01\SQLEXPRESS;
+    DataBase=Qatar2022;Trusted_Connection=True;";
 
 
 }

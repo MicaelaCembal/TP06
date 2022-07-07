@@ -84,7 +84,7 @@ public class Equipo
             return _copasGanadas;
         }
         set{
-            _camiseta = value;
+            _copasGanadas = value;
         }
 
     }

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace TP06;
+namespace TP06.Models;
 
 
 public class Jugador
@@ -13,7 +13,7 @@ public class Jugador
     private string _equipoActual;
    
    
-    public Jugador(int IdJugador, int idEquipo, string nombre,DateTime fechaNacimiento, string foto, string equipoActual)
+    public Jugador(int idJugador, int idEquipo, string nombre,DateTime fechaNacimiento, string foto, string equipoActual)
         {
            _idJugador= idJugador;
            _idEquipo= idEquipo;
