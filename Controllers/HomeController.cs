@@ -15,15 +15,15 @@ public class HomeController : Controller
 
       public IActionResult Index()
     {
-        ViewBag.Equipo = BD.ListarEquipos();
+        ViewBag.ListaEquipo = BD.ListarEquipos();
         return View();
     }
 /*IActionResult VerDetalleEquipo(int IdEquipo): Debe retornar la View DetalleEquipo. 
 Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista de jugadores de dicho equipo.*/
     public IActionResult VerDetalleEquipo(int IdEquipo)
     {
-        ViewBag.Equipo = BD.VerInfoEquipo(IdEquipo);
-        ViewBag.Jugador = BD.ListarJugadores(IdEquipo);
+        ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
+        ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
         return View();
     }
     
