@@ -12,7 +12,7 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+/*IActionResult Index: Debe retornar la view Index. Cargar previamente en un ViewBag la lista de Equipos.*/
       public IActionResult Index()
     {
         ViewBag.ListaEquipo = BD.ListarEquipos();
@@ -24,28 +24,37 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
     {
         ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
         ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
-        return View();
+        return View(VerDetalleEquipo);
     }
-    
-    public IActionResult Eliminar(int id){
-        BD.EliminarPelicula(id);
-        return RedirectToAction("Index");
-    }
-
-    public IActionResult Privacy()
+    /*IActionResult VerDetalleJugador(int IdJugador): Debe retornar la View DetalleJugador. Cargar previamente en un ViewBag los datos del jugador.*/
+    public IActionResult VerDetalleJugador(int IdJugador)
     {
-        return View();
+        ViewBag.Jugador = BD.ListarJugadores(IdJugador);
+        return View(VerDetalleJugador);
     }
+    /*VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER*/
+    /*IActionResult AgregarJugador(IdEquipo): Debe devolver una View con el formulario de Jugadores para cargar. Cargar en un ViewBag el IdEquipo.*/
+    public IActionResult AgregarJugador(int IdEquipo){
+        /*muestre formulario input ocuylto hidden id equipo*/
 
-    [HttpPost]
-    public IActionResult CrearPelicula(string Nombre, int Duracion, string Director){
-        BD.InsertarPelicula(Nombre, Duracion, Director);
-        return RedirectToAction("Index");
+        ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
+        return View(AgregarJugador);
     }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    /*[HttpPost] IActionResult GuardarJugador(Jugador): Debe guardar en la base de datos el Jugador Agregado e ir al detalle de Equipo (Volver a cargar los ViewBags del punto 2)*/
+  [HttpPost]
+   public IActionResult GuardarJugador(Jugador Jug)
+   {
+    BD.AgregarJugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual);
+   ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
+        ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
+     return View(VerDetalleEquipo);
+    }
+/*IActionResult EliminarJugador(int IdJugador, int IdEquipo): Debe eliminar el jugador recibido como parámetro y volver al detalle de Equipo  (Volver a cargar los ViewBags del punto 2)*/
+   public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
+   {
+        BD.EliminarJugador(id);
+        ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
+        ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
+        return View(VerDetalleEquipo);
     }
 }
