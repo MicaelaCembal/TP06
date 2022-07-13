@@ -1,0 +1,23 @@
+<!--VerDetalleEquipo.cshtml
+Debe contener:
+
+Toda la info del equipo
+Un link que te lleve a crearJugador enviando el Id de Equipo
+Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener un link que dirija VerDetalleJugador enviando el Id del Jugador y el Id de Equipo-->
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<div class="card mb-3">
+  <img src="/imagenes/@ViewBag.UnEquipo.Escudo" class="card-img-top UnEquipoEscudo" alt="...">
+  <div class="card-body">
+    <img src="/imagenes/@ViewBag.UnEquipo.Camiseta" class= "UnEquipoCamiseta" alt="...">
+    <h5 class="card-title">@ViewBag.UnEquipo.Nombre</h5>
+    <p class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</p>
+     <p class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</p>
+
+  </div>
+</div>

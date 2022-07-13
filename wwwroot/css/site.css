@@ -103,5 +103,15 @@ background-color: rgb(160, 156, 156);
   
 }
 
+.UnEquipoEscudo{
+  width: 80px;
+  height: 600px;
+}
+
+.UnEquipoCamiseta{
+
+  width: 200px;
+  height: 250px;
+}
 
 /*.nav-link:hover {font-weight: 900;}*/

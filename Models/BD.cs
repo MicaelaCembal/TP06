@@ -65,7 +65,7 @@ namespace TP06.Models;
     /*ListarJugadores(int IdEquipo): Devuelve un List de Jugadores*/
     public static List<Jugador> ListarJugadores(int IdEquipo){
         List<Jugador> lista = new List<Jugador>();
-        string sql = "SELECT * FROM Jugadores WHERE IdEquipo = @pIdEquipo";
+        string sql = "SELECT * FROM Jugadores";
         using(SqlConnection db = new SqlConnection(_connectionString)){
             lista = db.Query<Jugador>(sql).ToList();
         }
