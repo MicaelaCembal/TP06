@@ -13,10 +13,8 @@ using System.Collections.Generic;
 namespace TP06.Models{
     public class BD {
 
-    private static string  _connectionString = @"Server=A-CRO-01\SQLEXPRESS;
+    private static string  _connectionString = @"Server=A-CIDI-112\SQLEXPRESS;
     DataBase=Qatar2022;Trusted_Connection=True;";
-
-
 
     /*AgregarJugador(Jugador Jug) Agrega el jugador a la base de datos.*/
 
@@ -29,18 +27,20 @@ namespace TP06.Models{
     }
 
     /*EliminarJugador(int IdJugador) Elimina el jugador de la base de datos.*/
-     public static void EliminarJugador(int id){
+     public static int EliminarJugador(int id){
+        int registrosEliminados=0;
         string sql = "DELETE FROM Jugadores WHERE IdJugador = @pId";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new { pId = id });
+            registrosEliminados=db.Execute(sql, new { pId = id });
         }
+        return registrosEliminados;
     }
     /*VerInfoEquipo(int IdEquipo): devuelve un objeto Equipo*/
     public static List<Equipo> VerInfoEquipo(int IdEquipo){
         List<Equipo> lista = new List<Equipo>();
         string sql = "SELECT * FROM Equipos WHERE IdEquipo = @pIdEquipo";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            lista = db.Query<Equipo>(sql).ToList();
+            lista = db.QueryFirstOrDefault<Equipo>(sql, new {pIdEquipo = IdEquipo});
         }
         return lista;
     }
@@ -49,7 +49,7 @@ namespace TP06.Models{
         List<Jugador> lista = new List<Jugador>();
         string sql = "SELECT * FROM Jugadores WHERE IdJugador = @pIdJugador";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            lista = db.Query<Jugador>(sql).ToList();
+            lista = db.QueryFirstOrDefault<Jugador>(sql, new {pIdJugador=IdJugador});
         }
         return lista;
     }
