@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace TP06.Models{
     public class BD {
 
-    private static string  _connectionString = @"Server=A-CIDI-112\SQLEXPRESS;
+    private static string  _connectionString = @"Server=A-CIDI-112;
     DataBase=Qatar2022;Trusted_Connection=True;";
 
     /*AgregarJugador(Jugador Jug) Agrega el jugador a la base de datos.*/
@@ -36,22 +36,22 @@ namespace TP06.Models{
         return registrosEliminados;
     }
     /*VerInfoEquipo(int IdEquipo): devuelve un objeto Equipo*/
-    public static List<Equipo> VerInfoEquipo(int IdEquipo){
-        List<Equipo> lista = new List<Equipo>();
+    public static Equipo VerInfoEquipo(int IdEquipo){
+       Equipo MiEquipo=null; 
         string sql = "SELECT * FROM Equipos WHERE IdEquipo = @pIdEquipo";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            lista = db.QueryFirstOrDefault<Equipo>(sql, new {pIdEquipo = IdEquipo});
+            MiEquipo = db.QueryFirstOrDefault<Equipo>(sql, new {pIdEquipo = IdEquipo});
         }
-        return lista;
+        return MiEquipo;
     }
     /*VerInfoJugador(int IdJugador): Devuelve un objeto Jugador*/
-    public static List<Jugador> VerInfoJugador(int IdJugador){
-        List<Jugador> lista = new List<Jugador>();
+    public static Jugador VerInfoJugador(int IdJugador){
+        Jugador MiJugador=null;
         string sql = "SELECT * FROM Jugadores WHERE IdJugador = @pIdJugador";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            lista = db.QueryFirstOrDefault<Jugador>(sql, new {pIdJugador=IdJugador});
+            MiJugador = db.QueryFirstOrDefault<Jugador>(sql, new {pIdJugador=IdJugador});
         }
-        return lista;
+        return MiJugador;
     }
 /*ListarEquipos(): Devuelve un List de Equipos*/
  public static List<Equipo> ListarEquipos(){

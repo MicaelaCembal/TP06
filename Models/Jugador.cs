@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace TP06.Models;
+namespace TP06.Models{
 
 
 public class Jugador
@@ -97,4 +97,5 @@ public class Jugador
 
     
 
+}
 }

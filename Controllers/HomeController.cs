@@ -44,15 +44,15 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
   [HttpPost]
    public IActionResult GuardarJugador(Jugador Jug)
    {
-    BD.AgregarJugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual);
-   ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
-        ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
+    BD.AgregarJugador(Jug.IdJugador, Jug.IdEquipo, Jug.Nombre, Jug.FechaNacimiento, Jug.Foto, Jug.EquipoActual);
+   ViewBag.UnEquipo = BD.VerInfoEquipo(Jug.IdEquipo);
+        ViewBag.Jugadores = BD.ListarJugadores(Jug.IdEquipo);
      return View(VerDetalleEquipo);
     }
 /*IActionResult EliminarJugador(int IdJugador, int IdEquipo): Debe eliminar el jugador recibido como parámetro y volver al detalle de Equipo  (Volver a cargar los ViewBags del punto 2)*/
    public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
    {
-        BD.EliminarJugador(id);
+        BD.EliminarJugador(IdJugador);
         ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
         ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
         return View(VerDetalleEquipo);
