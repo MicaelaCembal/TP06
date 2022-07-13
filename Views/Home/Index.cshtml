@@ -2,7 +2,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!--Index.cshtml
+Debe mostrar los escudos y nombre de cada Pais. (Mostrar usando cards) Cada equipo debe contener un link a VerDetalleEquipo enviando el Id del Equipo seleccionado.-->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+@foreach(Equipo info in @ViewBag.ListaEquipo)
+{
+    <div class="card" style="width: 18rem";>
+        <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=info.IdEquipo})'>
+            <img class="card-img-top" src="/imagenes/@info.Escudo.png">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">@info.Nombre</h5>
+            <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=info.IdEquipo})'class="btn btn-primary">Detalles del equipo</a>
+        </div>
+    </div>
+
+}
+
+
+

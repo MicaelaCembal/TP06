@@ -11,7 +11,7 @@ En el menú deben estar el link a la Home y el logo del Mundial Qatar2022 -->
 </head>
 <body>
     <header>
-        <img class="logo" src="logo.png">
+        <img class="logo" src="/imagenes/logo.png">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
             <div class="container">
                 
@@ -30,5 +30,19 @@ En el menú deben estar el link a la Home y el logo del Mundial Qatar2022 -->
         </nav>
         
     </header>
+ <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2022 - Qatar2022 - Angel, Agustina - Cembal, Micaela  
+    </div>
+    |</footer>
 </body>
 </html>

@@ -24,13 +24,13 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
     {
         ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
         ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
-        return View(VerDetalleEquipo);
+        return View("VerDetalleEquipo");
     }
     /*IActionResult VerDetalleJugador(int IdJugador): Debe retornar la View DetalleJugador. Cargar previamente en un ViewBag los datos del jugador.*/
     public IActionResult VerDetalleJugador(int IdJugador)
     {
         ViewBag.Jugador = BD.ListarJugadores(IdJugador);
-        return View(VerDetalleJugador);
+        return View("VerDetalleJugador");
     }
     /*VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER*/
     /*IActionResult AgregarJugador(IdEquipo): Debe devolver una View con el formulario de Jugadores para cargar. Cargar en un ViewBag el IdEquipo.*/
@@ -38,16 +38,16 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
         /*muestre formulario input ocuylto hidden id equipo*/
 
         ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
-        return View(AgregarJugador);
+        return View("AgregarJugador");
     }
     /*[HttpPost] IActionResult GuardarJugador(Jugador): Debe guardar en la base de datos el Jugador Agregado e ir al detalle de Equipo (Volver a cargar los ViewBags del punto 2)*/
   [HttpPost]
-   public IActionResult GuardarJugador(Jugador Jug)
+   public IActionResult GuardarJugador(int IdJugador, int IdEquipo, string Nombre,DateTime FechaNacimiento, string Foto, string EquipoActual)
    {
-    BD.AgregarJugador(Jug.IdJugador, Jug.IdEquipo, Jug.Nombre, Jug.FechaNacimiento, Jug.Foto, Jug.EquipoActual);
-   ViewBag.UnEquipo = BD.VerInfoEquipo(Jug.IdEquipo);
-        ViewBag.Jugadores = BD.ListarJugadores(Jug.IdEquipo);
-     return View(VerDetalleEquipo);
+        Jugador jugador = new Jugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual);
+        BD.AgregarJugador(jugador);
+        return RedirectToAction("VerDetalleEquipo");
+
     }
 /*IActionResult EliminarJugador(int IdJugador, int IdEquipo): Debe eliminar el jugador recibido como parámetro y volver al detalle de Equipo  (Volver a cargar los ViewBags del punto 2)*/
    public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
