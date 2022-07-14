@@ -9,25 +9,29 @@ Poner en un Hidden el IdEquipo
 Utilizar un input Tipo File para cargar la imagen del jugador.
 Utilizar como name de los inputs los mismos nombres que los atributos de la clase jugador.
 El botón submit debe ir a la acción del form GuardarJugado-->
-<div class="cuerpo pb-1">
+
+
+<div class= "cuerpo">
 <form action='@Url.Action("GuardarJugador")' method="POST">
   <div class="form-group">
     <input type="text" class="form-control" id="Nombre" placeholder="Nombre" name="Nombre" required>
   </div>
-  </div>
-  <div class="cuerpo pb-1">
+
    <div class="form-group">
     <input type="date" class="form-control" id="FechaNacimiento" placeholder="FechaNacimiento" name="FechaNacimiento" required>
   </div>
-   </div>
-  <div class="cuerpo pb-1">
+ 
+ 
     <div class="form-group">
     <input type="text" class="form-control" id="EquipoActual" placeholder="EquipoActual" name="EquipoActual" required>
-  </div>
+
    </div>
-<div class="cuerpo pb-1">
+
   <button type="submit" class="btn btn-primary">Guardar Jugador Nuevo</button>
- </div>
 </form>
+<form action='@Url.Action("GuardarJugador","Home")' method="POST" enctype="multipart/form-data">
+<input type="file" name="MyFile">
 
 
+</form>
+</div>

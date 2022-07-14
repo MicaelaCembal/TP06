@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 using TP06.Models;
 
 namespace TP06.Controllers;
@@ -7,7 +9,11 @@ namespace TP06.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
+    private IWebHostEnvironment Environment;
+    public HomeController(IWebHostEnvironment environment)
+    {
+        Environment=environment;
+    }
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
