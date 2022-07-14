@@ -8,16 +8,36 @@ Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener u
 @{
     ViewData["Title"] = "Home Page";
 }
-
+<div class="cuerpo">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+<center><h1 class="card-title">@ViewBag.UnEquipo.Nombre</h1></center>
 <div class="card mb-3">
-  <img src="/imagenes/@ViewBag.UnEquipo.Escudo" class="card-img-top UnEquipoEscudo" alt="...">
+  <center><img src="/imagenes/@ViewBag.UnEquipo.Escudo" class=" UnEquipoEscudo" alt="..."></center>
   <div class="card-body">
-    <img src="/imagenes/@ViewBag.UnEquipo.Camiseta" class= "UnEquipoCamiseta" alt="...">
-    <h5 class="card-title">@ViewBag.UnEquipo.Nombre</h5>
-    <p class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</p>
-     <p class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</p>
+   <center> <img src="/imagenes/@ViewBag.UnEquipo.Camiseta" class= "UnEquipoCamiseta" alt="..."></center>
+    <b><p class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</p></b>
+    <b> <p class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</p></b>
 
   </div>
+</div>
+
+@foreach(Jugador info in @ViewBag.Jugadores)
+{
+  
+<div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/imagenes/@ViewBag.Jugadores.Foto" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title">@ViewBag.Jugadores.Nombre</h3>
+              <a href='@Url.Action("VerDetalleJugador", "Home", new{IdEquipo=info.IdEquipo, IdJugador=info.IdJugador})'class="btn btn-primary">Detalles del jugador</a>
+          </div>
+          </div>
+      </div>
+</div>
+}
+<!--Un link que te lleve a crearJugador enviando el Id de Equipo-->
+ <a href='@Url.Action("AgregarJugador", "Home", new{IdEquipo=@ViewBag.UnEquipo})'class="btn btn-primary">Agregar jugador</a>
 </div>

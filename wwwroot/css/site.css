@@ -1,3 +1,7 @@
+.cuerpo{
+  margin:20px;
+  padding:10px;
+}
 html {
   font-size: 14px;
 }
@@ -104,8 +108,8 @@ background-color: rgb(160, 156, 156);
 }
 
 .UnEquipoEscudo{
-  width: 80px;
-  height: 700px;
+  width: 550px;
+  height: 600px;
 }
 
 .UnEquipoCamiseta{
