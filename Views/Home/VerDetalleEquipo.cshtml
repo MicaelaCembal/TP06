@@ -23,23 +23,23 @@ Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener u
 
 @foreach(Jugador info in @ViewBag.Jugadores)
 {
-  
+  if(@info.IdEquipo==ViewBag.UnEquipo.IdEquipo)
+  {
 <div class="row pb-2">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">@info.Nombre</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href='@Url.Action("VerDetalleJugador", "Home", new{IdEquipo=info.IdEquipo, IdJugador=info.IdJugador})'class="btn btn-primary">Detalles del jugador</a>
+        <h2 class="card-title">@info.Nombre</h2>
+        <a href='@Url.Action("VerDetalleJugador", "Home", new{ IdJugador=info.IdJugador})'class="btn btn-primary">Detalles del jugador</a>
       </div>
     </div>
   </div>
 </div>
-<!--Un link que te lleve a crearJugador enviando el Id de Equipo-->
+}
 }
 
 
- <a href='@Url.Action("AgregarJugador", "Home", new{IdEquipo=@ViewBag.UnEquipo})'class="btn btn-primary">Agregar jugador</a>
+ <a href='@Url.Action("AgregarJugador", "Home", new{IdEquipo=@ViewBag.UnEquipo.IdEquipo})'class="btn btn-primary">Agregar jugador</a>
 
 
 </div>

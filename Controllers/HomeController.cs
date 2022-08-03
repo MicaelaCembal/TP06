@@ -32,7 +32,7 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
     /*IActionResult VerDetalleJugador(int IdJugador): Debe retornar la View DetalleJugador. Cargar previamente en un ViewBag los datos del jugador.*/
     public IActionResult VerDetalleJugador(int IdJugador)
     {
-        ViewBag.Jugador = BD.ListarJugadores(IdJugador);
+        ViewBag.Jugadorinfo = BD.VerInfoJugador(IdJugador);
         return View("VerDetalleJugador");
     }
     /*VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER*/
