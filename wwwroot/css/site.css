@@ -1,16 +1,20 @@
 .cuerpo{
   margin:20px;
   padding:10px;
+  
 }
 html {
   font-size: 14px;
+  
 }
 a.navbar-brand {  
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
-
+.fondo{
+  background-color: #910B31;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -24,6 +28,7 @@ html {
 
 body {
   margin-bottom: 60px;
+ 
 }
 
 a.navbar-brand {  
@@ -32,10 +37,10 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-.btn-primary {
+.btn-primary_ {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: rgb(160, 156, 156);
+  border-color: rgb(160, 156, 156)E;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -118,4 +123,15 @@ background-color: rgb(160, 156, 156);
   height: 250px;
 }
 
+.cartas{
+  float:right;
+}
+.botonderecho
+{
+  float:right;
+}
+
 /*.nav-link:hover {font-weight: 900;}*/
+.seleccion:hover {
+  background-color:  rgb(160, 156, 156);
+}

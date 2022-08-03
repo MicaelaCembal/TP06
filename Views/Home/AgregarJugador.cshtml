@@ -12,26 +12,26 @@ El botón submit debe ir a la acción del form GuardarJugado-->
 
 <div class= "cuerpo">
 <form action='@Url.Action("GuardarJugador","Home")' method="POST" enctype="multipart/form-data">
-  <div class="form-group">
+  <div class="form-group pb-4">
   
   
   <input type="hidden" class="form-control" id="IdEquipo" name="IdEquipo" value="@ViewBag.IdEquipo">
-      <input type="text" class="form-control" id="Nombre" placeholder="Nombre" name="Nombre" required>
+      <input type="text" class="form-control" id="Nombre" placeholder="Nombre"  autocomplete= "off" name="Nombre" required>
   </div>
 
-   <div class="form-group">
-    <input type="date" class="form-control" id="FechaNacimiento" placeholder="FechaNacimiento" name="FechaNacimiento" required>
+   <div class="form-group pb-4">
+    <input type="date" class="form-control" id="FechaNacimiento" placeholder="FechaNacimiento" autocomplete= "off" name="FechaNacimiento" required>
   </div>
  
  
-    <div class="form-group">
-    <input type="text" class="form-control" id="EquipoActual" placeholder="EquipoActual" name="EquipoActual" required>
+    <div class="form-group pb-3">
+    <input type="text" class="form-control" id="EquipoActual" placeholder="EquipoActual" autocomplete= "off" name="EquipoActual" required>
 
    </div>
 
 <input type="file" name="Foto">
 
-<button type="submit" class="btn btn-primary">Guardar Jugador Nuevo</button>
+<button type="submit" class="btn btn-primary_ botonderecho">Guardar Jugador Nuevo</button>
 </form>
 
 </div>
