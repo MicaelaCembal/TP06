@@ -10,7 +10,6 @@ Utilizar un input Tipo File para cargar la imagen del jugador.
 Utilizar como name de los inputs los mismos nombres que los atributos de la clase jugador.
 El botón submit debe ir a la acción del form GuardarJugado-->
 
-
 <div class= "cuerpo">
 <form action='@Url.Action("GuardarJugador")' method="POST">
   <div class="form-group">
@@ -27,11 +26,12 @@ El botón submit debe ir a la acción del form GuardarJugado-->
 
    </div>
 
-  <button type="submit" class="btn btn-primary">Guardar Jugador Nuevo</button>
+  
 </form>
 <form action='@Url.Action("GuardarJugador","Home")' method="POST" enctype="multipart/form-data">
 <input type="file" name="MyFile">
 
 
 </form>
+<button type="submit" class="btn btn-primary">Guardar Jugador Nuevo</button>
 </div>

@@ -10,13 +10,18 @@ Debe mostrar los escudos y nombre de cada Pais. (Mostrar usando cards) Cada equi
 
 @foreach(Equipo info in @ViewBag.ListaEquipo)
 {
-    <div class="card" style="width: 18rem";>
+ <div class="row">
+       <div class="col">
+<div class="card" style="width: 18rem";>
             <img class="card-img-top" src="/imagenes/@info.Escudo">
         <div class="card-body">
             <h5 class="card-title">@info.Nombre</h5>
             <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=info.IdEquipo})'class="btn btn-primary">Detalles del equipo</a>
         </div>
     </div>
+       </div>
+ </div>
+    
 
 }
 

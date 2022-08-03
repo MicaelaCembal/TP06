@@ -10,13 +10,10 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private IWebHostEnvironment Environment;
-    public HomeController(IWebHostEnvironment environment)
+    public HomeController(IWebHostEnvironment environment,ILogger<HomeController> logger)
     {
         Environment=environment;
-    }
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
+         _logger = logger;
     }
 /*IActionResult Index: Debe retornar la view Index. Cargar previamente en un ViewBag la lista de Equipos.*/
       public IActionResult Index()
@@ -46,21 +43,36 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
         ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
         return View("AgregarJugador");
     }
-    /*[HttpPost] IActionResult GuardarJugador(Jugador): Debe guardar en la base de datos el Jugador Agregado e ir al detalle de Equipo (Volver a cargar los ViewBags del punto 2)*/
-  [HttpPost]
-   public IActionResult GuardarJugador(int IdJugador, int IdEquipo, string Nombre,DateTime FechaNacimiento, string Foto, string EquipoActual)
-   {
-        Jugador jugador = new Jugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual);
-        BD.AgregarJugador(jugador);
-        return RedirectToAction("VerDetalleEquipo");
-
-    }
 /*IActionResult EliminarJugador(int IdJugador, int IdEquipo): Debe eliminar el jugador recibido como parámetro y volver al detalle de Equipo  (Volver a cargar los ViewBags del punto 2)*/
    public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
    {
         BD.EliminarJugador(IdJugador);
         ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
         ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
-        return View(VerDetalleEquipo);
+        return View("VerDetalleEquipo");
+    }
+    /*[HttpPost] IActionResult GuardarJugador(Jugador): Debe guardar en la base de datos el Jugador Agregado e ir al detalle de Equipo (Volver a cargar los ViewBags del punto 2)*/
+  [HttpPost]
+   public IActionResult GuardarJugador(int IdJugador, int IdEquipo, string Nombre,DateTime FechaNacimiento, string Foto, string EquipoActual)
+    {        
+        Jugador jugador = new Jugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual);
+        BD.AgregarJugador(jugador);
+        return RedirectToAction("VerDetalleEquipo");
+
+
+        /*
+        public IActionResult Habitacion(int sala, string clave, IFormFile MyFile)
+        {
+            if(MyFile.Length>0)
+            {
+                string wwwRootLocal=this.Environment.ContentRootPath + @"\wwroot\" + MyFile.FileName;
+                using(var stream = System.IO.File.Create(wwwRootLocal))
+                {
+                    MyFile.CopyToAsync(stream);
+                }
+            }
+        }
+        */
+
     }
 }
