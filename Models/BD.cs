@@ -19,10 +19,10 @@ namespace TP06.Models;
     /*AgregarJugador(Jugador Jug) Agrega el jugador a la base de datos.*/
 
     public static void AgregarJugador(Jugador Jug){
-        string sql = "INSERT INTO Jugadores  (IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual) VALUES (@pIdJugador, @pIdEquipo, @pNombre, @pFechaNacimiento, @pFoto, @pEquipoActual)";
+        string sql = "INSERT INTO Jugadores  (IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual) VALUES (@pIdEquipo, @pNombre, @pFechaNacimiento, @pFoto, @pEquipoActual)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, new { pIdJugador= Jug.IdJugador, pIdEquipo=Jug.IdEquipo, pNombre= Jug.Nombre, pFechaNacimiento=Jug.FechaNacimiento, pFoto=Jug.Foto, pEquipoActual=Jug.EquipoActual });
+            db.Execute(sql, new { pIdEquipo=Jug.IdEquipo, pNombre= Jug.Nombre, pFechaNacimiento=Jug.FechaNacimiento, pFoto=Jug.Foto, pEquipoActual=Jug.EquipoActual });
         }
     }
 

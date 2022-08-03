@@ -39,8 +39,8 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
     /*IActionResult AgregarJugador(IdEquipo): Debe devolver una View con el formulario de Jugadores para cargar. Cargar en un ViewBag el IdEquipo.*/
     public IActionResult AgregarJugador(int IdEquipo){
         /*muestre formulario input ocuylto hidden id equipo*/
-
-        ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
+        ViewBag.IdEquipo = IdEquipo;
+        
         return View("AgregarJugador");
     }
 /*IActionResult EliminarJugador(int IdJugador, int IdEquipo): Debe eliminar el jugador recibido como parámetro y volver al detalle de Equipo  (Volver a cargar los ViewBags del punto 2)*/
@@ -53,11 +53,20 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
     }
     /*[HttpPost] IActionResult GuardarJugador(Jugador): Debe guardar en la base de datos el Jugador Agregado e ir al detalle de Equipo (Volver a cargar los ViewBags del punto 2)*/
   [HttpPost]
-   public IActionResult GuardarJugador(int IdJugador, int IdEquipo, string Nombre,DateTime FechaNacimiento, string Foto, string EquipoActual)
-    {        
-        Jugador jugador = new Jugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto, EquipoActual);
+   public IActionResult GuardarJugador(int IdJugador,int IdEquipo, string Nombre,DateTime FechaNacimiento, IFormFile Foto, string EquipoActual)
+    {    
+         if(Foto.Length>0)
+            {
+                string wwwRootLocal=this.Environment.ContentRootPath + @"\wwwroot\imagenes\" + Foto.FileName;
+                using(var stream = System.IO.File.Create(wwwRootLocal))
+                {
+                    Foto.CopyToAsync(stream);
+                }
+            }
+        
+        Jugador jugador = new Jugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto.FileName, EquipoActual);
         BD.AgregarJugador(jugador);
-        return RedirectToAction("VerDetalleEquipo");
+        return RedirectToAction("VerDetalleEquipo", new { IdEquipo = IdEquipo });
 
 
         /*

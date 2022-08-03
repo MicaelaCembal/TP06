@@ -11,9 +11,12 @@ Utilizar como name de los inputs los mismos nombres que los atributos de la clas
 El botón submit debe ir a la acción del form GuardarJugado-->
 
 <div class= "cuerpo">
-<form action='@Url.Action("GuardarJugador")' method="POST">
+<form action='@Url.Action("GuardarJugador","Home")' method="POST" enctype="multipart/form-data">
   <div class="form-group">
-    <input type="text" class="form-control" id="Nombre" placeholder="Nombre" name="Nombre" required>
+  
+  
+  <input type="hidden" class="form-control" id="IdEquipo" name="IdEquipo" value="@ViewBag.IdEquipo">
+      <input type="text" class="form-control" id="Nombre" placeholder="Nombre" name="Nombre" required>
   </div>
 
    <div class="form-group">
@@ -26,12 +29,9 @@ El botón submit debe ir a la acción del form GuardarJugado-->
 
    </div>
 
-  
-</form>
-<form action='@Url.Action("GuardarJugador","Home")' method="POST" enctype="multipart/form-data">
-<input type="file" name="MyFile">
+<input type="file" name="Foto">
 
-
-</form>
 <button type="submit" class="btn btn-primary">Guardar Jugador Nuevo</button>
+</form>
+
 </div>

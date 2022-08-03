@@ -19,14 +19,17 @@ Link para volver al equipo del jugador en cuestión
 }
 <div class="cuerpo">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<center><h1 class="card-title">@ViewBag.Jugador.Nombre</h1></center>
-<div class="card mb-3">
-  <center><img src="/imagenes/@ViewBag.Jugador.Escudo" class=" UnEquipoEscudo" alt="..."></center>
-  <div class="card-body">
-  
-    <b><p class="card-text">Pertenece al equipo: @ViewBag.Jugador.EquipoActual</p></b>
-    <b> <p class="card-text">Fecha de nacimiento: @ViewBag.Jugador.FechaNacimiento</p></b>
 
+  <div class="row pb-2">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">@ViewBag.Jugador.Nombre</h3>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=ViewBag.Jugador.IdEquipo})'class="btn btn-primary">Detalles del jugador</a>
+      </div>
+    </div>
   </div>
+</div>
 </div>
 
