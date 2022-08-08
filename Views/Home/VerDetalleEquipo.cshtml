@@ -12,12 +12,13 @@ Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener u
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <center><h1 class="card-title blanco">@ViewBag.UnEquipo.Nombre</h1></center>
 <div class="card mb-3">
-  <center><img src="/imagenes/@ViewBag.UnEquipo.Escudo" class=" UnEquipoEscudo" alt="..."></center>
+  <center><img src="/imagenes/@ViewBag.UnEquipo.Escudo" class=" UnEquipoEscudo pb-4" alt="..."></center>
   <div class="card-body">
    <center> <img src="/imagenes/@ViewBag.UnEquipo.Camiseta" class= "UnEquipoCamiseta" alt="..."></center>
-    <b><p class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</p></b>
-    <b> <p class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</p></b>
-
+   <div class="bordo">
+    <b><h4 class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</h4></b>
+    <b> <h4 class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</h4></b>
+</div>
   </div>
 </div>
 <div class="row pb-2">
@@ -29,7 +30,9 @@ Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener u
   <div class="col-6">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">@info.Nombre</h2>
+           <div class="bordo">
+          <h3 class="card-title">@info.Nombre</h3>
+          </div>
           <a href='@Url.Action("VerDetalleJugador", "Home", new{IdEquipo=info.IdEquipo, IdJugador=info.IdJugador})'class="btn btn-primary_ botones ">Detalles del jugador</a>
         </div>
       </div>
