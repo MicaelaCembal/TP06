@@ -67,21 +67,29 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
         Jugador jugador = new Jugador(IdJugador, IdEquipo, Nombre, FechaNacimiento, Foto.FileName, EquipoActual);
         BD.AgregarJugador(jugador);
         return RedirectToAction("VerDetalleEquipo", new { IdEquipo = IdEquipo });
-
-
-        /*
-        public IActionResult Habitacion(int sala, string clave, IFormFile MyFile)
-        {
-            if(MyFile.Length>0)
+    }
+    public IActionResult GuardarEquipo(int IdEquipo,string Nombre, IFormFile Escudo, IFormFile Camiseta, string Continente, int CopasGanadas)
+    {    
+         if(Escudo.Length>0) 
             {
-                string wwwRootLocal=this.Environment.ContentRootPath + @"\wwroot\" + MyFile.FileName;
+                string wwwRootLocal=this.Environment.ContentRootPath + @"\wwwroot\imagenes\" + Escudo.FileName;
                 using(var stream = System.IO.File.Create(wwwRootLocal))
                 {
-                    MyFile.CopyToAsync(stream);
+                    Escudo.CopyToAsync(stream);
                 }
             }
-        }
-        */
-
+        
+        if(Camiseta.Length>0) 
+            {
+                string wwwRootLocal=this.Environment.ContentRootPath + @"\wwwroot\imagenes\" + Camiseta.FileName;
+                using(var stream = System.IO.File.Create(wwwRootLocal))
+                {
+                    Camiseta.CopyToAsync(stream);
+                }
+            }
+        
+        Equipo equipo = new Equipo(IdEquipo, Nombre, Escudo.FileName, Camiseta.FileName, Continente, CopasGanadas);
+        BD.AgregarEquipo(equipo);
+        return View("Index");
     }
 }

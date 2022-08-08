@@ -25,7 +25,13 @@ namespace TP06.Models;
             db.Execute(sql, new { pIdEquipo=Jug.IdEquipo, pNombre= Jug.Nombre, pFechaNacimiento=Jug.FechaNacimiento, pFoto=Jug.Foto, pEquipoActual=Jug.EquipoActual });
         }
     }
-
+    public static void AgregarEquipo(Equipo Equ){
+        string sql = "INSERT INTO Equipo  (Nombre, Escudo, Camiseta, Continente, CopasGanadas) VALUES (@pIdEquipo, @pNombre, @pEscudo, @pCamiseta, @pContinente, @pCopasGanadas)";
+        using(SqlConnection db = new SqlConnection(_connectionString))
+        {
+            db.Execute(sql, new { pNombre= Equ.Nombre, pEscudo=Equ.Escudo, pCamiseta=Equ.Camiseta, pContinente=Equ.Continente, pCopasGanadas=Equ.CopasGanadas });
+        }
+    }
     /*EliminarJugador(int IdJugador) Elimina el jugador de la base de datos.*/
      public static int EliminarJugador(int id){
         int registrosEliminados=0;
