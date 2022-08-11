@@ -14,7 +14,8 @@ namespace TP06.Models;
     public class BD {
 
     private static string _connectionString = 
-        @"Server=localhost;DataBase=Qatar2022;Trusted_Connection=True;";
+        @"Server=MICAELA-CEMBAL\SQLEXPRESS;
+        DataBase=Qatar2022;Trusted_Connection=True;";
 
     /*AgregarJugador(Jugador Jug) Agrega el jugador a la base de datos.*/
 

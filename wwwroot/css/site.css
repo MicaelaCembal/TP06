@@ -1,11 +1,11 @@
 .cuerpo{
   margin:20px;
   padding:10px;
-  
+ 
 }
 html {
   font-size: 14px;
-  
+ 
 }
 a.navbar-brand {  
   white-space: normal;
@@ -110,14 +110,18 @@ list-style-type:none;
 float:right;
   display:inline-flex;
 background-color: rgb(160, 156, 156);  
-  
+ 
 }
 
 .UnEquipoEscudo{
   width: 550px;
   height: 600px;
 }
+.Video{
 
+  width: 750px;
+  height: 500px;
+}
 .UnEquipoCamiseta{
 
   width: 200px;
@@ -138,10 +142,14 @@ background-color: rgb(160, 156, 156);
 }
 
 .blanco{
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Francois One', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Rubik', sans-serif;
   color:#e5e5e5;
 }
 .bordo{
-  font-family: 'Teko', sans-serif;
+  font-family: 'Francois One', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Rubik', sans-serif;
 color:#910B31;
 }
