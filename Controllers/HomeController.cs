@@ -10,6 +10,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private IWebHostEnvironment Environment;
+    
     public HomeController(IWebHostEnvironment environment,ILogger<HomeController> logger)
     {
         Environment=environment;
@@ -35,7 +36,7 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
         ViewBag.Jugadorinfo = BD.VerInfoJugador(IdJugador);
         return View("VerDetalleJugador");
     }
-    /*VEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER*/
+    
     /*IActionResult AgregarJugador(IdEquipo): Debe devolver una View con el formulario de Jugadores para cargar. Cargar en un ViewBag el IdEquipo.*/
     public IActionResult AgregarJugador(int IdEquipo){
         /*muestre formulario input ocuylto hidden id equipo*/
@@ -43,13 +44,16 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
         
         return View("AgregarJugador");
     }
+    public IActionResult AgregarEquipo(int IdEquipo){
+       
+        ViewBag.IdEquipo = IdEquipo;
+        return View("AgregarEquipo");
+    }
 /*IActionResult EliminarJugador(int IdJugador, int IdEquipo): Debe eliminar el jugador recibido como parámetro y volver al detalle de Equipo  (Volver a cargar los ViewBags del punto 2)*/
    public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
    {
         BD.EliminarJugador(IdJugador);
-        ViewBag.UnEquipo = BD.VerInfoEquipo(IdEquipo);
-        ViewBag.Jugadores = BD.ListarJugadores(IdEquipo);
-        return View("VerDetalleEquipo");
+        return RedirectToAction ("VerDetalleEquipo", new { IdEquipo = IdEquipo });
     }
     /*[HttpPost] IActionResult GuardarJugador(Jugador): Debe guardar en la base de datos el Jugador Agregado e ir al detalle de Equipo (Volver a cargar los ViewBags del punto 2)*/
   [HttpPost]
@@ -90,6 +94,6 @@ Cargar Previamente un ViewBag con los datos del Equipo y un ViewBag con la lista
         
         Equipo equipo = new Equipo(IdEquipo, Nombre, Escudo.FileName, Camiseta.FileName, Continente, CopasGanadas);
         BD.AgregarEquipo(equipo);
-        return View("Index");
+        return  RedirectToAction("Index");
     }
 }

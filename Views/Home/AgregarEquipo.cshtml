@@ -9,9 +9,14 @@ ue permite ingresar con un formulario los datos de un equipo.
 La bandera se carga con un input de tipo File.-->
 
 <div class= "cuerpo">
-<form action='@Url.Action("GuardarJugador","Home")' method="POST" enctype="multipart/form-data">
-  <div class="form-group pb-4">
+ <div class="blanco pb-4">
+ <center><h1>AGREGAR EQUIPO </h1></center>
+  </div>
+<form action='@Url.Action("GuardarEquipo","Home")' method="POST" enctype="multipart/form-data">
   
+  <input type="hidden" class="form-control" id="IdEquipo" name="IdEquipo" value="@ViewBag.IdEquipo">
+  <div class="form-group pb-4">
+
     <input type="text" class="form-control" id="Nombre" placeholder="Nombre"  autocomplete= "off" name="Nombre" required>
   </div>
 
@@ -24,8 +29,15 @@ La bandera se carga con un input de tipo File.-->
     <input type="int" class="form-control" id="CopasGanadas" placeholder="CopasGanadas" autocomplete= "off" name="CopasGanadas" required>
 
    </div>
-
+<div class="blanco">
+ <p>Adjunte escudo</p>
+  </div>
 <input type="file" name="Escudo">
+<div class="pb-2">
+</div>
+<div class="blanco">
+<p>Adjunte camiseta</p>
+  </div>
 <input type="file" name="Camiseta">
 
 <button type="submit" class="btn btn-primary_ botonderecho">Guardar Equipo Nuevo</button>

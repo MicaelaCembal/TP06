@@ -15,8 +15,8 @@ Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener u
   <center><img src="/imagenes/@ViewBag.UnEquipo.Escudo" class=" UnEquipoEscudo" alt="..."></center>
   <div class="card-body">
    <center> <img src="/imagenes/@ViewBag.UnEquipo.Camiseta" class= "UnEquipoCamiseta" alt="..."></center>
-    <b><p class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</p></b>
-    <b> <p class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</p></b>
+    <b><h4 class="card-text bordo">Pertenece al continente: @ViewBag.UnEquipo.Continente</h4></b>
+    <b> <h4 class="card-text bordo">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</h4></b>
 
   </div>
 </div>
@@ -31,6 +31,7 @@ Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener u
         <div class="card-body">
           <h2 class="card-title">@info.Nombre</h2>
           <a href='@Url.Action("VerDetalleJugador", "Home", new{IdEquipo=info.IdEquipo, IdJugador=info.IdJugador})'class="btn btn-primary_ botones ">Detalles del jugador</a>
+          <a href='@Url.Action("EliminarJugador", "Home", new{ IdJugador=info.IdJugador, IdEquipo=info.IdEquipo})'class="btn btn-danger">Eliminar</a>
         </div>
       </div>
  </div>

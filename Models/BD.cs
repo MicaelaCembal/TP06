@@ -26,20 +26,20 @@ namespace TP06.Models;
         }
     }
     public static void AgregarEquipo(Equipo Equ){
-        string sql = "INSERT INTO Equipo  (Nombre, Escudo, Camiseta, Continente, CopasGanadas) VALUES (@pIdEquipo, @pNombre, @pEscudo, @pCamiseta, @pContinente, @pCopasGanadas)";
+        string sql = "INSERT INTO Equipos  (Nombre, Escudo, Camiseta, Continente, CopasGanadas) VALUES (@pNombre, @pEscudo, @pCamiseta, @pContinente, @pCopasGanadas)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             db.Execute(sql, new { pNombre= Equ.Nombre, pEscudo=Equ.Escudo, pCamiseta=Equ.Camiseta, pContinente=Equ.Continente, pCopasGanadas=Equ.CopasGanadas });
         }
     }
     /*EliminarJugador(int IdJugador) Elimina el jugador de la base de datos.*/
-     public static int EliminarJugador(int id){
-        int registrosEliminados=0;
+     public static void EliminarJugador(int id){
+        
         string sql = "DELETE FROM Jugadores WHERE IdJugador = @pId";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            registrosEliminados=db.Execute(sql, new { pId = id });
+            db.Execute(sql, new { pId = id });
         }
-        return registrosEliminados;
+        
     }
     /*VerInfoEquipo(int IdEquipo): devuelve un objeto Equipo*/
     public static Equipo VerInfoEquipo(int IdEquipo){

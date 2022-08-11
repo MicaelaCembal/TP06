@@ -8,31 +8,32 @@ Debe mostrar los escudos y nombre de cada Pais. (Mostrar usando cards) Cada equi
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
  <div class="cuerpo">
- <div class="blanco pb-4">
- <center><h1>EQUIPOS MUNDIAL 2022</h1></center>
-  </div>
- <div class="container">
-    <div class="row">
-@foreach(Equipo info in @ViewBag.ListaEquipo)
-{
-   
-            <div class="col-4">
-            <div class="card cartas " style="width: 18rem";>
-                        <img class="card-img-top" src="/imagenes/@info.Escudo">
-                    <div class="card-body">
-                        <h5 class="card-title bordo">@info.Nombre</h5>
-                        
-                        <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=info.IdEquipo})'class="btn btn-primary_">Detalles del equipo</a>
+            <div class="blanco pb-4">
+            <center><h1>EQUIPOS MUNDIAL 2022</h1></center>
+            </div>
+        <div class="container pb-3">
+            <div class="row">
+        @foreach(Equipo info in @ViewBag.ListaEquipo)
+        {
+        
+                    <div class="col-4">
+                    <div class="card cartas " style="width: 18rem";>
+                                <img class="card-img-top" src="/imagenes/@info.Escudo">
+                            <div class="card-body">
+                                <h5 class="card-title bordo">@info.Nombre</h5>
+                                
+                                <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=info.IdEquipo})'class="btn btn-primary_">Detalles del equipo</a>
+                                    
+                            </div>
+                            
                     </div>
-                    
+                    </div>
+        }
+
+
             </div>
-            </div>
-}
 
-
-    </div>
-
-    <a href='@Url.Action("AgregarEquipo", "Home")'class="btn btn-primary_ botonderecho">Agregar equipo</a>
+            <a href='@Url.Action("AgregarEquipo", "Home")'class="btn btn-primary_ botonderecho">Agregar equipo</a>
   
 
   </div>
