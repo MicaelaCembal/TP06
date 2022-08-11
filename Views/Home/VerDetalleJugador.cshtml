@@ -21,18 +21,18 @@ Link para volver al equipo del jugador en cuestión
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <div class="row pb-2">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">@ViewBag.Jugadorinfo.Nombre</h3>
-      <center> <img src="/imagenes/@ViewBag.Jugadorinfo.Foto" class= "UnEquipoCamiseta" alt="..."></center>
-        <p class="card-text">Fecha de nacimiento: @ViewBag.Jugadorinfo.FechaNacimiento</p>
-        <p class="card-text">Equipo actual: @ViewBag.Jugadorinfo.EquipoActual</p>
-       
+    <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body bordo">
+              <h1 class="card-title">@ViewBag.Jugadorinfo.Nombre</h1>
+            <center> <img src="/imagenes/@ViewBag.Jugadorinfo.Foto" class= "UnEquipoCamiseta pb-4" alt="..."></center>
+              <h4 class="card-text">Fecha de nacimiento: @ViewBag.Jugadorinfo.FechaNacimiento</h4>
+              <h4 class="card-text">Equipo actual: @ViewBag.Jugadorinfo.EquipoActual</h4>
+            
+          </div>
       </div>
-    </div>
   </div>
 </div>
- <div class="row  mt-3 mb-3"><a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=ViewBag.Jugadorinfo.IdEquipo})'class="btn btn-primary_">Volver al equipo</a></div>
+ <a href='@Url.Action("VerDetalleEquipo", "Home", new{IdEquipo=ViewBag.Jugadorinfo.IdEquipo})'class="btn btn-primary_ botonderecho">Volver al equipo</a>
 </div>
 
