@@ -117,7 +117,11 @@ background-color: rgb(160, 156, 156);
   width: 550px;
   height: 600px;
 }
+.Video{
 
+  width: 750px;
+  height: 500px;
+}
 .UnEquipoCamiseta{
 
   width: 200px;
@@ -138,10 +142,14 @@ background-color: rgb(160, 156, 156);
 }
 
 .blanco{
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Francois One', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Rubik', sans-serif;
   color:#e5e5e5;
 }
 .bordo{
-  font-family: 'Teko', sans-serif;
+  font-family: 'Francois One', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Rubik', sans-serif;
 color:#910B31;
 }
