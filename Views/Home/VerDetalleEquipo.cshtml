@@ -1,0 +1,50 @@
+<!--VerDetalleEquipo.cshtml
+Debe contener:
+
+Toda la info del equipo
+Un link que te lleve a crearJugador enviando el Id de Equipo
+Tabla con todos sus jugadores del Equipo en cuestión. Cada jugador debe tener un link que dirija VerDetalleJugador enviando el Id del Jugador y el Id de Equipo-->
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="cuerpo">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<center><h1 class="card-title blanco">@ViewBag.UnEquipo.Nombre</h1></center>
+<div class="card mb-3">
+  <center><img src="/imagenes/@ViewBag.UnEquipo.Escudo" class=" UnEquipoEscudo pb-4" alt="..."></center>
+  <div class="card-body">
+   <center> <img src="/imagenes/@ViewBag.UnEquipo.Camiseta" class= "UnEquipoCamiseta" alt="..."></center>
+   <div class="bordo">
+    <b><h4 class="card-text">Pertenece al continente: @ViewBag.UnEquipo.Continente</h4></b>
+    <b> <h4 class="card-text">Copas mundiales ganadas: @ViewBag.UnEquipo.CopasGanadas</h4></b>
+</div>
+
+  </div>
+</div>
+<div class="row pb-2">
+
+  @foreach(Jugador info in @ViewBag.Jugadores)
+  {
+    if(@info.IdEquipo==ViewBag.UnEquipo.IdEquipo)
+    {
+  <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+           <div class="bordo">
+          <h3 class="card-title">@info.Nombre</h3>
+          </div>
+          <a href='@Url.Action("VerDetalleJugador", "Home", new{IdEquipo=info.IdEquipo, IdJugador=info.IdJugador})'class="btn btn-primary_ botones ">Detalles del jugador</a>
+          <a href='@Url.Action("EliminarJugador", "Home", new{ IdJugador=info.IdJugador, IdEquipo=info.IdEquipo})'class="btn btn-danger">Eliminar</a>
+        </div>
+      </div>
+ </div>
+  }
+  }
+ 
+</div>
+
+ <a href='@Url.Action("AgregarJugador", "Home", new{IdEquipo=@ViewBag.UnEquipo.IdEquipo})'class="btn btn-primary_ botonderecho">Agregar jugador</a>
+
+
+</div>
